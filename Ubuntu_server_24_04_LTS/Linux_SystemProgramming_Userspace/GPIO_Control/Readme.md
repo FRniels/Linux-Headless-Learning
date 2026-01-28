@@ -102,7 +102,7 @@ Transfer source code from Windows via SCP (if applicable):
 scp C:\path\to\GPIO_blink.c ubuntu@192.168.0.139:/home/ubuntu/SystemProgrammingBasics
 ```
 
-Source code reference: [GPIO_blink.c](GPIO_blink.c)
+Source code reference: [GPIO_blink.c](GPIO_blink/GPIO_blink.c)
 
 ### Compilation and Execution
 
