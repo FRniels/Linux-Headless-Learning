@@ -120,51 +120,30 @@ int main() {
         return 1;
     }
     
-    // Main blink loop
-    //int state = 0;
-    //int blink_count = 0;
+    
     uint64_t rx_packets_curr_count = 0;
     uint64_t rx_packets_prev_count = 0;
 
+    // Briefly turn on the LED if wlan packets are received.
     while (keep_running) {
-        /*
-	state = !state;
-        
-        if (gpio_set_value(GPIO_PIN, state) < 0) {
-            log_message("ERROR", "Failed to set GPIO value");
-            break;
-        }
-        
-        log_message("INFO", state ? "LED ON" : "LED OFF");
-        blink_count++;
-        
-        sleep(1);
-	*/
-	
-	if(wlan0_get_rx_packets(&rx_packets_curr_count) == 0) {
-	   if(rx_packets_curr_count > rx_packets_prev_count) {
-	       if(gpio_set_value(GPIO_PIN, 1) < 0) {
-	           log_message("ERROR", "Failed to set GPIO value");
-		   break;
-	       }
-	       
-	       rx_packets_prev_count = rx_packets_curr_count;	
+        if(wlan0_get_rx_packets(&rx_packets_curr_count) == 0) {
+            if(rx_packets_curr_count > rx_packets_prev_count) {
+                if(gpio_set_value(GPIO_PIN, 1) < 0) {
+                    log_message("ERROR", "Failed to set GPIO value");
+                    break;
+                }
+                
+                rx_packets_prev_count = rx_packets_curr_count;	
 
-	       nanosleep(&(struct timespec){0, 100 * 1000 * 1000}, NULL); // 100ms
-	       
-	       if(gpio_set_value(GPIO_PIN, 0) < 0) {
-	           log_message("ERROR", "Failed to set GPIO value");
-		   break;
-	       }
-	   }
-	}
+                nanosleep(&(struct timespec){0, 100 * 1000 * 1000}, NULL); // 100ms
+                
+                if(gpio_set_value(GPIO_PIN, 0) < 0) {
+                    log_message("ERROR", "Failed to set GPIO value");
+                    break;
+                }
+            }
+        }
     }
-    
-    /*
-    char msg[64];
-    snprintf(msg, sizeof(msg), "Total blinks: %d", blink_count / 2);
-    log_message("INFO", msg);
-    */
 
     cleanup_gpio();
     log_message("INFO", "Exiting");
