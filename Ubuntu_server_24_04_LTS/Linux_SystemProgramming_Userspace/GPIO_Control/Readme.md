@@ -85,7 +85,7 @@ echo 529 | sudo tee unexport
 
 ## Control GPIO via C Program
 
-### Project Setup
+### LED blink
 
 Create project directory and source file:
 
@@ -96,15 +96,9 @@ cd SystemProgrammingBasics
 nvim GPIO_blink.c
 ```
 
-Transfer source code from Windows via SCP (if applicable):
-
-```bash
-scp C:\path\to\GPIO_blink.c ubuntu@192.168.0.139:/home/ubuntu/SystemProgrammingBasics
-```
-
 Source code reference: [GPIO_blink.c](GPIO_blink/GPIO_blink.c)
 
-### Compilation and Execution
+#### Compilation and Execution
 
 Compile the source code:
 
@@ -117,6 +111,10 @@ Execute the program (requires root privileges):
 ```bash
 sudo ./GPIO_blink
 ```
+
+### LED wlan0 Rx indicator
+
+Source code reference: [GPIO_blink_wlan_TxRx.c](GPIO_blink/GPIO_blink_wlan_TxRx.c)
 
 ## Bash vs C Execution Performance
 
