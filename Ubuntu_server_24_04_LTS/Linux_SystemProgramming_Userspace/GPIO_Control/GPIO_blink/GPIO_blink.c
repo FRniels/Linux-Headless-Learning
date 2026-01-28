@@ -77,6 +77,7 @@ void cleanup_gpio() {
 }
 
 int main() {
+    // Catch the CTRL + C close signal
     signal(SIGINT, handle_signal);
     
     log_message("INFO", "SysPulse v0.1 - LED Blink");
