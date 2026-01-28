@@ -107,7 +107,7 @@ int main() {
     // Catch the CTRL + C close signal
     signal(SIGINT, handle_signal);
     
-    log_message("INFO", "Starting LED blinking on GPIO" GPIO_PIN " (Press Ctrl+C to stop)");
+    log_message("INFO", "Starting LED WLAN0 Rx blinking on GPIO" GPIO_PIN " (Press Ctrl+C to stop)");
     
     // Initialize GPIO
     if (gpio_export(GPIO_PIN) < 0) {
