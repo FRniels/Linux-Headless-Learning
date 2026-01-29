@@ -73,6 +73,18 @@ Step to next line of execution
 next or n
 ```
 
+Step into function
+
+```
+step
+```
+
+Resume until next breakpoint is hit
+
+```
+continue
+```
+
 Print variable value
 
 ```
